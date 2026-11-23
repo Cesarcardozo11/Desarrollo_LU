@@ -42,11 +42,6 @@ export class ClientesService {
     return this.http.put<Cliente>(`${this.url}/${id}`, cliente);
   }
  
-  // Actualizar parcialmente un cliente
-  actualizarParcialCliente(id: number, cliente: Cliente): Observable<Cliente> {
-    return this.http.patch<Cliente>(`${this.url}/${id}`, cliente);
-  }
- 
   // Eliminar un cliente
   eliminarCliente(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`);

@@ -5,49 +5,75 @@
     <p>Registra un accesorio nuevo en el inventario.</p>
   </header>
 
-  <div class="tarjeta formulario">
+  <form class="tarjeta formulario" [formGroup]="productoForm" (ngSubmit)="registrarProducto()">
     <!-- Los campos se ordenan en dos columnas (una sola en celular) -->
     <div class="campos">
       <mat-form-field appearance="outline">
         <mat-label>Código</mat-label>
-        <input matInput [(ngModel)]="producto.codigo" placeholder="LUL-011">
+        <input matInput formControlName="codigo" placeholder="LUL-011" />
+        @if (productoForm.controls.codigo.hasError('required')) {
+          <mat-error>Ingrese el código</mat-error>
+        } @else if (productoForm.controls.codigo.hasError('maxlength')) {
+          <mat-error>Máximo 20 caracteres</mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Nombre del producto</mat-label>
-        <input matInput [(ngModel)]="producto.nombre" placeholder="Ej. Case para iPhone">
+        <input matInput formControlName="nombre" placeholder="Ej. Case para iPhone" />
+        @if (productoForm.controls.nombre.hasError('required')) {
+          <mat-error>Ingrese el nombre</mat-error>
+        } @else if (productoForm.controls.nombre.hasError('maxlength')) {
+          <mat-error>Máximo 100 caracteres</mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Categoría</mat-label>
-        <mat-select [(ngModel)]="producto.categoria">
-          <mat-option value="Protección">Protección</mat-option>
-          <mat-option value="Fundas">Fundas</mat-option>
-          <mat-option value="Accesorios">Accesorios</mat-option>
-          <mat-option value="Audio">Audio</mat-option>
-          <mat-option value="Cables">Cables</mat-option>
+        <mat-select formControlName="categoria">
+          @for (categoria of categorias; track categoria) {
+            <mat-option [value]="categoria">{{ categoria }}</mat-option>
+          }
         </mat-select>
+        @if (productoForm.controls.categoria.hasError('required')) {
+          <mat-error>Seleccione una categoría</mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Dispositivo</mat-label>
-        <input matInput [(ngModel)]="producto.dispositivo" placeholder="Ej. iPhone 15">
+        <input matInput formControlName="dispositivo" placeholder="Ej. iPhone 15" />
+        @if (productoForm.controls.dispositivo.hasError('required')) {
+          <mat-error>Ingrese el dispositivo</mat-error>
+        } @else if (productoForm.controls.dispositivo.hasError('maxlength')) {
+          <mat-error>Máximo 50 caracteres</mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Precio</mat-label>
         <span matTextPrefix>$&nbsp;</span>
-        <input matInput type="number" [(ngModel)]="producto.precio">
+        <input matInput type="number" formControlName="precio" min="1" />
+        @if (productoForm.controls.precio.hasError('required')) {
+          <mat-error>Ingrese el precio</mat-error>
+        } @else if (productoForm.controls.precio.hasError('min')) {
+          <mat-error>El precio debe ser mayor a 0</mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Stock</mat-label>
-        <input matInput type="number" [(ngModel)]="producto.stock">
+        <input matInput type="number" formControlName="stock" min="0" step="1" />
+        @if (productoForm.controls.stock.hasError('required')) {
+          <mat-error>Ingrese el stock</mat-error>
+        } @else if (productoForm.controls.stock.invalid) {
+          <mat-error>Debe ser un número entero, 0 o mayor</mat-error>
+        }
       </mat-form-field>
     </div>
 
-    <button mat-flat-button class="boton-principal" (click)="registrarProducto()">
-      Registrar producto
+    <button mat-flat-button type="submit" class="boton-principal" [disabled]="cargando()">
+      {{ cargando() ? 'Registrando...' : 'Registrar producto' }}
     </button>
-  </div>
+  </form>
 </section>
