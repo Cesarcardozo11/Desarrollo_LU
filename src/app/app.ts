@@ -1,11 +1,10 @@
 import { Component, signal, inject } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { MenuComponent } from './Components/menu/menu.component';
-import { LoggerComponent } from './Components/logger/logger.component';
 import { AuthService } from './Services/auth.service';
 
 @Component({
-  imports: [MenuComponent, LoggerComponent, RouterOutlet],
+  imports: [MenuComponent, RouterOutlet],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
