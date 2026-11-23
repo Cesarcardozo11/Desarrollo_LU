@@ -9,25 +9,44 @@
     [mode]="isHandset ? 'over' : 'side'"
     [opened]="isHandset === false"
   >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list> 
-      <a mat-list-item routerLink="/Clientes">Clientes</a>
-      <a mat-list-item routerLink="/Inventario">Inventario</a>
-      <a mat-list-item routerLink="/form">Agregar a Inventario</a>
-      <a mat-list-item routerLink="/Compras">Compras</a>
-      
-    </mat-nav-list>
+    <!-- Logo de la marca -->
+    <a class="marca menu-marca" routerLink="/Clientes">
+      <img ngSrc="lulo.svg" width="36" height="36" alt="" />
+      <span class="marca-nombre">LULOSA</span>
+    </a>
+
+    <p class="menu-seccion">Administración</p>
+
+    <!-- routerLinkActive agrega la clase "activo" al enlace de la página abierta -->
+    <nav class="menu-enlaces">
+      <a routerLink="/Clientes" routerLinkActive="activo" (click)="isHandset && drawer.close()">
+        <mat-icon aria-hidden="true">group</mat-icon> Clientes
+      </a>
+      <a routerLink="/Inventario" routerLinkActive="activo" (click)="isHandset && drawer.close()">
+        <mat-icon aria-hidden="true">inventory_2</mat-icon> Inventario
+      </a>
+      <a routerLink="/form" routerLinkActive="activo" (click)="isHandset && drawer.close()">
+        <mat-icon aria-hidden="true">add_circle_outline</mat-icon> Agregar producto
+      </a>
+      <a routerLink="/Compras" routerLinkActive="activo" (click)="isHandset && drawer.close()">
+        <mat-icon aria-hidden="true">shopping_bag</mat-icon> Compras
+      </a>
+    </nav>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar style="background-color: rgb(255, 193, 246);">
+
+  <mat-sidenav-content class="contenido">
+    <header class="barra-superior">
       @if (isHandset) {
-        <button type="button" aria-label="Toggle sidenav" matIconButton (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <button type="button" aria-label="Abrir menú" matIconButton (click)="drawer.toggle()">
+          <mat-icon aria-hidden="true">menu</mat-icon>
         </button>
+        <span class="marca-nombre barra-marca">LULOSA</span>
       }
-      <span>Lulosa.</span>
-      <button type="button" matButton style="margin-left: auto" (click)="cerrarSesion()">Cerrar sesión</button>
-    </mat-toolbar>
+      <button type="button" class="boton-salir" (click)="cerrarSesion()">
+        <mat-icon aria-hidden="true">logout</mat-icon> Cerrar sesión
+      </button>
+    </header>
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

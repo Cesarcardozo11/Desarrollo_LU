@@ -5,13 +5,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import { NgOptimizedImage } from '@angular/common';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../Services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, NgOptimizedImage],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

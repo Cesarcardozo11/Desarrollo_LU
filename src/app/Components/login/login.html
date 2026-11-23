@@ -1,11 +1,18 @@
-<mat-card class="login-card">
+<main class="login-pagina">
+<section class="tarjeta login-tarjeta">
+  <!-- Logo de la marca -->
+  <div class="marca login-marca">
+    <img ngSrc="lulo.svg" width="48" height="48" alt="" />
+    <span class="marca-nombre">LULOSA</span>
+  </div>
+  <p class="login-lema">Accesorios tecnológicos con estilo y protección</p>
+
   @if (modo() === 'login') {
     <!-- ===== Apartado: Iniciar sesión ===== -->
-    <mat-card-header>
-      <mat-card-title>Iniciar sesión</mat-card-title>
-    </mat-card-header>
+    <h1 class="login-titulo">Iniciar sesión</h1>
+    <p class="login-subtitulo">Ingresa con tu email y contraseña</p>
 
-    <mat-card-content>
+    <div>
       <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
@@ -29,7 +36,7 @@
           }
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" class="full-width" [disabled]="cargando()">
+        <button mat-flat-button type="submit" class="full-width boton-principal" [disabled]="cargando()">
           {{ cargando() ? 'Iniciando sesión...' : 'Iniciar sesión' }}
         </button>
       </form>
@@ -38,14 +45,13 @@
         ¿No tienes cuenta?
         <button mat-button type="button" (click)="cambiarModo()">Regístrate</button>
       </p>
-    </mat-card-content>
+    </div>
   } @else {
     <!-- ===== Apartado: Registrarse ===== -->
-    <mat-card-header>
-      <mat-card-title>Crear cuenta</mat-card-title>
-    </mat-card-header>
+    <h1 class="login-titulo">Crear cuenta</h1>
+    <p class="login-subtitulo">Regístrate para administrar la tienda</p>
 
-    <mat-card-content>
+    <div>
       <form [formGroup]="registroForm" (ngSubmit)="registrar()">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Nombre</mat-label>
@@ -85,7 +91,7 @@
           }
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" class="full-width" [disabled]="cargando()">
+        <button mat-flat-button type="submit" class="full-width boton-principal" [disabled]="cargando()">
           {{ cargando() ? 'Registrando...' : 'Registrarme' }}
         </button>
       </form>
@@ -94,6 +100,7 @@
         ¿Ya tienes cuenta?
         <button mat-button type="button" (click)="cambiarModo()">Inicia sesión</button>
       </p>
-    </mat-card-content>
+    </div>
   }
-</mat-card>
+</section>
+</main>

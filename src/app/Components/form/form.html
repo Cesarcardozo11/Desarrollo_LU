@@ -1,43 +1,53 @@
-<div class="formulario">
-  <h2>Registrar producto - Lulosa</h2>
+<section class="pagina">
+  <header class="pagina-encabezado">
+    <span class="etiqueta">Catálogo</span>
+    <h1>Agregar producto</h1>
+    <p>Registra un accesorio nuevo en el inventario.</p>
+  </header>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Código</mat-label>
-    <input matInput [(ngModel)]="producto.codigo" placeholder="LUL-011">
-  </mat-form-field>
+  <div class="tarjeta formulario">
+    <!-- Los campos se ordenan en dos columnas (una sola en celular) -->
+    <div class="campos">
+      <mat-form-field appearance="outline">
+        <mat-label>Código</mat-label>
+        <input matInput [(ngModel)]="producto.codigo" placeholder="LUL-011">
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Nombre del producto</mat-label>
-    <input matInput [(ngModel)]="producto.nombre" placeholder="Ej. Case para iPhone">
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre del producto</mat-label>
+        <input matInput [(ngModel)]="producto.nombre" placeholder="Ej. Case para iPhone">
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Categoría</mat-label>
-    <mat-select [(ngModel)]="producto.categoria">
-      <mat-option value="Protección">Protección</mat-option>
-      <mat-option value="Fundas">Fundas</mat-option>
-      <mat-option value="Accesorios">Accesorios</mat-option>
-      <mat-option value="Audio">Audio</mat-option>
-      <mat-option value="Cables">Cables</mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Categoría</mat-label>
+        <mat-select [(ngModel)]="producto.categoria">
+          <mat-option value="Protección">Protección</mat-option>
+          <mat-option value="Fundas">Fundas</mat-option>
+          <mat-option value="Accesorios">Accesorios</mat-option>
+          <mat-option value="Audio">Audio</mat-option>
+          <mat-option value="Cables">Cables</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Dispositivo</mat-label>
-    <input matInput [(ngModel)]="producto.dispositivo" placeholder="Ej. iPhone 15">
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Dispositivo</mat-label>
+        <input matInput [(ngModel)]="producto.dispositivo" placeholder="Ej. iPhone 15">
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Precio</mat-label>
-    <input matInput type="number" [(ngModel)]="producto.precio">
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Precio</mat-label>
+        <span matTextPrefix>$&nbsp;</span>
+        <input matInput type="number" [(ngModel)]="producto.precio">
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Stock</mat-label>
-    <input matInput type="number" [(ngModel)]="producto.stock">
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" [(ngModel)]="producto.stock">
+      </mat-form-field>
+    </div>
 
-  <button mat-raised-button color="primary" (click)="registrarProducto()">
-    Registrar producto
-  </button>
-</div>
+    <button mat-flat-button class="boton-principal" (click)="registrarProducto()">
+      Registrar producto
+    </button>
+  </div>
+</section>

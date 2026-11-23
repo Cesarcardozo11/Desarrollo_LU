@@ -1,15 +1,64 @@
-.login-card {
+/* Fondo de toda la pantalla: degradado de rosa pastel a blanco */
+.login-pagina {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  background: linear-gradient(160deg, var(--lulosa-rosa) 0%, var(--lulosa-rosa-claro) 55%, var(--lulosa-blanco) 100%);
+}
+
+/* Tarjeta blanca del formulario (los colores vienen de .tarjeta en styles.css) */
+.login-tarjeta {
+  width: 100%;
   max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
+  padding: 36px 32px 24px;
+  box-sizing: border-box;
+  /* Línea vinotinto arriba: el acento comercial de la marca */
+  border-top: 4px solid var(--lulosa-vino);
+}
+
+.login-marca {
+  justify-content: center;
+}
+
+.login-lema {
+  margin: 6px 0 28px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--lulosa-texto-suave);
+}
+
+.login-titulo {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.login-subtitulo {
+  margin: 4px 0 20px;
+  color: var(--lulosa-texto-suave);
+  font-size: 0.9rem;
 }
 
 .full-width {
   width: 100%;
-  margin-bottom: 15px;
+}
+
+.boton-principal {
+  margin-top: 8px;
 }
 
 .cambiar-modo {
+  margin: 16px 0 0;
   text-align: center;
-  margin: 10px 0 0;
+  font-size: 0.9rem;
+  color: var(--lulosa-texto-suave);
+}
+
+@media (max-width: 480px) {
+  .login-tarjeta {
+    padding: 28px 20px 20px;
+  }
 }

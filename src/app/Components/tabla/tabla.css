@@ -1,14 +1,50 @@
+/* Contenedor blanco con borde rosa; en pantallas pequeñas se desplaza de lado */
 .tabla-contenedor {
 	width: 100%;
 	overflow-x: auto;
+	background-color: var(--lulosa-blanco);
+	border: 1px solid var(--lulosa-rosa-borde);
+	border-radius: var(--lulosa-radio);
+	box-shadow: var(--lulosa-sombra);
 }
 
 table {
 	width: 100%;
 	min-width: 760px;
+	background: transparent;
+}
+
+/* Encabezado: fondo rosa pastel y títulos en vinotinto */
+th.mat-mdc-header-cell {
+	background-color: var(--lulosa-rosa-claro);
+	color: var(--lulosa-vino);
+	font-family: var(--lulosa-fuente-titulos);
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	border-bottom: 1px solid var(--lulosa-rosa-borde);
+}
+
+td.mat-mdc-cell {
+	color: var(--lulosa-texto);
+	border-bottom-color: var(--lulosa-rosa-borde);
+}
+
+/* La fila se resalta al pasar el mouse */
+tr.mat-mdc-row:hover td {
+	background-color: var(--lulosa-rosa-claro);
+}
+
+tr.mat-mdc-row:last-child td {
+	border-bottom: none;
 }
 
 .sin-datos {
-	padding: 16px;
+	padding: 40px 16px;
 	text-align: center;
+	color: var(--lulosa-texto-suave);
+	background-color: var(--lulosa-blanco);
+	border: 1px dashed var(--lulosa-rosa-borde);
+	border-radius: var(--lulosa-radio);
 }

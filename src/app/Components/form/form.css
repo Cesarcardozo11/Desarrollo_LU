@@ -1,20 +1,32 @@
 .formulario {
-  width: 500px;
-  margin: 30px auto;
-  padding: 25px;
+  max-width: 720px;
+  padding: 32px;
+  box-sizing: border-box;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 25px;
+/* Dos columnas de campos */
+.campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
 }
 
 mat-form-field {
   width: 100%;
-  margin-bottom: 10px;
 }
 
-button {
+.boton-principal {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 8px;
+}
+
+/* En celular: una sola columna */
+@media (max-width: 600px) {
+  .formulario {
+    padding: 20px 16px;
+  }
+
+  .campos {
+    grid-template-columns: 1fr;
+  }
 }

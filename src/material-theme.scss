@@ -13,7 +13,11 @@ html {
         primary: mat.$rose-palette,
         tertiary: mat.$red-palette,
       ),
-      typography: Roboto,
+      // Fuentes de la marca: Inter para textos y Poppins para títulos
+      typography: (
+        plain-family: Inter,
+        brand-family: Poppins,
+      ),
       density: 0,
     )
   );

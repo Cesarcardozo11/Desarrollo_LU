@@ -1,1 +1,154 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   IDENTIDAD VISUAL LULOSA
+   Rosa pastel (principal) · Blanco (limpieza) · Vinotinto #6F0303 (acento comercial)
+   ========================================================= */
+
+:root {
+  /* Colores de la marca */
+  --lulosa-rosa: #f7d3dc;
+  --lulosa-rosa-claro: #fdf2f5;
+  --lulosa-rosa-borde: #f1dbe1;
+  --lulosa-blanco: #ffffff;
+  --lulosa-vino: #6f0303;
+  --lulosa-vino-hover: #8c1414;
+
+  /* Textos */
+  --lulosa-texto: #2c1a1d;
+  --lulosa-texto-suave: #6e5a5e;
+
+  /* Fuentes */
+  --lulosa-fuente-titulos: 'Poppins', sans-serif;
+  --lulosa-fuente-texto: 'Inter', sans-serif;
+
+  /* Formas */
+  --lulosa-radio: 16px;
+  --lulosa-sombra: 0 10px 30px rgba(111, 3, 3, 0.08);
+
+  /* Angular Material toma sus colores de estas variables:
+     así los botones y campos usan el vinotinto y el rosa de la marca */
+  --mat-sys-primary: var(--lulosa-vino);
+  --mat-sys-on-primary: var(--lulosa-blanco);
+  --mat-sys-primary-container: var(--lulosa-rosa);
+  --mat-sys-on-primary-container: var(--lulosa-vino);
+  --mat-sys-surface: var(--lulosa-blanco);
+  --mat-sys-surface-container-low: var(--lulosa-blanco);
+  --mat-sys-on-surface: var(--lulosa-texto);
+  --mat-sys-on-surface-variant: var(--lulosa-texto-suave);
+  --mat-sys-outline: #c9b3b8;
+  --mat-sys-error: #b3261e;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--lulosa-rosa-claro);
+  color: var(--lulosa-texto);
+  font-family: var(--lulosa-fuente-texto);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--lulosa-fuente-titulos);
+  color: var(--lulosa-texto);
+}
+
+/* ---------- Logo: lulo + nombre LULOSA ---------- */
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.marca-nombre {
+  font-family: var(--lulosa-fuente-titulos);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  color: var(--lulosa-vino);
+}
+
+/* ---------- Contenido de cada página ---------- */
+.pagina {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.pagina-encabezado {
+  margin-bottom: 24px;
+}
+
+.pagina-encabezado h1 {
+  margin: 0 0 4px;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.pagina-encabezado p {
+  margin: 0;
+  color: var(--lulosa-texto-suave);
+}
+
+/* Etiqueta pequeña sobre el título */
+.etiqueta {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: var(--lulosa-rosa);
+  color: var(--lulosa-vino);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Tarjeta blanca con borde rosa y sombra suave */
+.tarjeta {
+  background-color: var(--lulosa-blanco);
+  border: 1px solid var(--lulosa-rosa-borde);
+  border-radius: var(--lulosa-radio);
+  box-shadow: var(--lulosa-sombra);
+}
+
+/* Botones principales: vinotinto con esquinas redondeadas */
+.boton-principal.mat-mdc-unelevated-button {
+  height: 48px;
+  border-radius: 12px;
+  font-family: var(--lulosa-fuente-titulos);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.boton-principal.mat-mdc-unelevated-button:not(:disabled):hover {
+  background-color: var(--lulosa-vino-hover);
+}
+
+/* SweetAlert con los colores y fuentes de la marca */
+.swal2-popup {
+  border-radius: var(--lulosa-radio) !important;
+  font-family: var(--lulosa-fuente-texto) !important;
+}
+
+.swal2-title {
+  font-family: var(--lulosa-fuente-titulos) !important;
+  color: var(--lulosa-texto) !important;
+}
+
+.swal2-confirm {
+  background-color: var(--lulosa-vino) !important;
+  border-radius: 10px !important;
+}
+
+/* En celular el contenido usa menos margen */
+@media (max-width: 600px) {
+  .pagina {
+    padding: 20px 16px;
+  }
+
+  .pagina-encabezado h1 {
+    font-size: 1.4rem;
+  }
+}
