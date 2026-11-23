@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
@@ -7,7 +8,7 @@ import { LoginRequest, LoginResponse } from './auth';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly url = 'http://localhost:3000/api/auth';
+  private readonly url = `${environment.apiUrl}/auth`;
   private http = inject(HttpClient);
 
   // Envía email y contraseña al backend.

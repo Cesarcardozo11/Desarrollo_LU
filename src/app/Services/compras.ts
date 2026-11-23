@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
@@ -27,7 +28,7 @@ interface RespuestaApi<T> {
   providedIn: 'root',
 })
 export class ComprasService {
-  private readonly url = 'http://localhost:3000/api/v1/compras';
+  private readonly url = `${environment.apiUrl}/v1/compras`;
   private http = inject(HttpClient);
 
   getCompras(): Observable<Compra[]> {

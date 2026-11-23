@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
@@ -22,7 +23,7 @@ interface RespuestaApi<T> {
   providedIn: 'root',
 })
 export class ProductosService {
-  private readonly url = 'http://localhost:3000/api/v1/productos';
+  private readonly url = `${environment.apiUrl}/v1/productos`;
   private http = inject(HttpClient);
 
   getProductos(): Observable<Producto[]> {

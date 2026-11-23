@@ -8,6 +8,7 @@ export interface Cliente {
   fecha_creacion?: Date;
 }
 
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -17,7 +18,7 @@ import { Observable } from 'rxjs';
 })
 export class ClientesService {
  
-  private readonly url = 'http://localhost:3000/api/clientes';
+  private readonly url = `${environment.apiUrl}/clientes`;
  
   constructor(private http: HttpClient) {}
  
