@@ -9,8 +9,7 @@
   margin-bottom: 15px;
 }
 
-.error-message {
-  color: #f44336;
-  margin-bottom: 10px;
+.cambiar-modo {
   text-align: center;
+  margin: 10px 0 0;
 }

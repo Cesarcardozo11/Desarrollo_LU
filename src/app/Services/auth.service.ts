@@ -2,7 +2,7 @@ import { environment } from '../../environments/environment';
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { LoginRequest, LoginResponse } from './auth';
+import { LoginRequest, LoginResponse, RegistroRequest } from './auth';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +21,11 @@ export class AuthService {
         }
       })
     );
+  }
+
+  // Crea un usuario nuevo en el backend (no inicia sesión)
+  registrar(datos: RegistroRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.url}/registro`, datos);
   }
 
   // Borra la sesión
