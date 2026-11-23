@@ -5,13 +5,21 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { NgOptimizedImage } from '@angular/common';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../Services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, NgOptimizedImage],
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    NgOptimizedImage,
+  ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -36,9 +44,15 @@ export class Login {
   registroForm = this.fb.nonNullable.group({
     nombre: ['', [Validators.required, Validators.maxLength(50)]],
     apellido: ['', [Validators.required, Validators.maxLength(50)]],
+    // La edad empieza vacía (null) para que el campo no muestre un 0
+    edad: this.fb.control<number | null>(null, [Validators.required, Validators.min(1), Validators.max(120)]),
+    sexo: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
   });
+
+  // Opciones del campo "Sexo"
+  readonly opcionesSexo = ['Femenino', 'Masculino', 'Otro'];
 
   // Cambia entre "Iniciar sesión" y "Registrarse"
   cambiarModo(): void {
@@ -76,7 +90,8 @@ export class Login {
     }
 
     this.cargando.set(true);
-    this.authService.registrar(this.registroForm.getRawValue()).subscribe({
+    const datos = this.registroForm.getRawValue();
+    this.authService.registrar({ ...datos, edad: Number(datos.edad) }).subscribe({
       next: () => {
         this.cargando.set(false);
         Swal.fire({

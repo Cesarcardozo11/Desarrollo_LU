@@ -26,6 +26,12 @@ th.mat-mdc-header-cell {
 	border-bottom: 1px solid var(--lulosa-rosa-borde);
 }
 
+/* El texto de cada celda queda en una sola línea (ej. la fecha 2026-11-23) */
+th.mat-mdc-header-cell,
+td.mat-mdc-cell {
+	white-space: nowrap;
+}
+
 td.mat-mdc-cell {
 	color: var(--lulosa-texto);
 	border-bottom-color: var(--lulosa-rosa-borde);

@@ -2,7 +2,7 @@
 <section class="tarjeta login-tarjeta">
   <!-- Logo de la marca -->
   <div class="marca login-marca">
-    <img ngSrc="lulo.svg" width="48" height="48" alt="" />
+    <img ngSrc="lulosa-isologo.svg" width="52" height="56" alt="" />
     <span class="marca-nombre">LULOSA</span>
   </div>
   <p class="login-lema">Accesorios tecnológicos con estilo y protección</p>
@@ -68,6 +68,31 @@
             <mat-error>Ingrese su apellido</mat-error>
           }
         </mat-form-field>
+
+        <!-- Edad y sexo van en la misma fila -->
+        <div class="fila">
+          <mat-form-field appearance="outline">
+            <mat-label>Edad</mat-label>
+            <input matInput type="number" formControlName="edad" min="1" max="120" />
+            @if (registroForm.controls.edad.hasError('required')) {
+              <mat-error>Ingrese su edad</mat-error>
+            } @else if (registroForm.controls.edad.invalid) {
+              <mat-error>Edad no válida</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Sexo</mat-label>
+            <mat-select formControlName="sexo">
+              @for (opcion of opcionesSexo; track opcion) {
+                <mat-option [value]="opcion">{{ opcion }}</mat-option>
+              }
+            </mat-select>
+            @if (registroForm.controls.sexo.hasError('required')) {
+              <mat-error>Seleccione una opción</mat-error>
+            }
+          </mat-form-field>
+        </div>
 
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>

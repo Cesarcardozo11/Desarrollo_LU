@@ -46,6 +46,17 @@
   width: 100%;
 }
 
+/* Dos campos lado a lado (edad y sexo) */
+.fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fila mat-form-field {
+  width: 100%;
+}
+
 .boton-principal {
   margin-top: 8px;
 }
