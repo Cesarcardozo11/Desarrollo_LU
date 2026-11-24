@@ -1,16 +1,20 @@
+<!-- @if = si la lista está vacía muestra un mensaje; @else = si no, muestra la tabla -->
 @if (data().length === 0) {
 	<p class="sin-datos">No hay datos para mostrar</p>
 } @else {
 	<div class="tabla-contenedor">
+		<!-- [dataSource] = property binding: le pasa la lista de filas a la tabla de Material -->
 		<table mat-table [dataSource]="data()">
-			<!-- Se crea una columna por cada key del JSON -->
+			<!-- @for = repite el bloque por cada columna. track = cómo identificar cada una -->
 			@for (col of columnas(); track col.campo) {
 				<ng-container [matColumnDef]="col.campo">
+					<!-- {{ }} = interpolación: muestra un valor dentro del HTML -->
 					<th mat-header-cell *matHeaderCellDef>{{ col.titulo }}</th>
 					<td mat-cell *matCellDef="let fila">{{ fila[col.campo] }}</td>
 				</ng-container>
 			}
 
+			<!-- Fila de títulos y filas de datos -->
 			<tr mat-header-row *matHeaderRowDef="displayedColumns()"></tr>
 			<tr mat-row *matRowDef="let fila; columns: displayedColumns()"></tr>
 		</table>

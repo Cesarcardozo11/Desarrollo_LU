@@ -2,21 +2,31 @@
 <section class="tarjeta login-tarjeta">
   <!-- Logo de la marca -->
   <div class="marca login-marca">
+    <!-- ngSrc = carga optimizada de la imagen (NgOptimizedImage); exige width y height -->
     <img ngSrc="lulosa-isologo.svg" width="52" height="56" alt="" />
     <span class="marca-nombre">LULOSA</span>
   </div>
   <p class="login-lema">Accesorios tecnológicos con estilo y protección</p>
 
+  <!-- @if = muestra este bloque solo si modo() es 'login'; si no, se muestra el @else (registro) -->
   @if (modo() === 'login') {
     <!-- ===== Apartado: Iniciar sesión ===== -->
     <h1 class="login-titulo">Iniciar sesión</h1>
     <p class="login-subtitulo">Ingresa con tu email y contraseña</p>
 
     <div>
+      <!--
+        [formGroup] = property binding: conecta este <form> con loginForm (del .ts)
+        (ngSubmit) = event binding: al enviar el formulario se ejecuta iniciarSesion()
+      -->
       <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
+        <!-- mat-form-field = campo de texto de Angular Material -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
+          <!-- formControlName = conecta este input con el campo "email" del formulario -->
           <input matInput type="email" formControlName="email" autocomplete="email" />
+          <!-- hasError('required') = ¿el campo tiene el error "obligatorio"? -->
+          <!-- mat-error = el mensaje rojo que aparece debajo del campo -->
           @if (loginForm.controls.email.hasError('required')) {
             <mat-error>Ingrese su email</mat-error>
           } @else if (loginForm.controls.email.hasError('email')) {
@@ -36,6 +46,8 @@
           }
         </mat-form-field>
 
+        <!-- [disabled] = el botón se desactiva mientras cargando() sea true -->
+        <!-- {{ }} = interpolación: muestra un texto u otro según cargando() -->
         <button mat-flat-button type="submit" class="full-width boton-principal" [disabled]="cargando()">
           {{ cargando() ? 'Iniciando sesión...' : 'Iniciar sesión' }}
         </button>
@@ -43,6 +55,7 @@
 
       <p class="cambiar-modo">
         ¿No tienes cuenta?
+        <!-- (click) = event binding: al hacer clic se ejecuta cambiarModo() -->
         <button mat-button type="button" (click)="cambiarModo()">Regístrate</button>
       </p>
     </div>
@@ -84,6 +97,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Sexo</mat-label>
             <mat-select formControlName="sexo">
+              <!-- @for = crea una opción por cada elemento de opcionesSexo. track = cómo identificar cada una -->
               @for (opcion of opcionesSexo; track opcion) {
                 <mat-option [value]="opcion">{{ opcion }}</mat-option>
               }

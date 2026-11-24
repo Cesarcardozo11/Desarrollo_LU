@@ -1,5 +1,11 @@
+<!--
+  @if = mostrar algo SOLO si se cumple la condición (reemplaza a *ngIf).
+  Si hay sesión y NO estamos en /login → se muestra el menú (que tiene su propio router-outlet).
+  Si no → solo se muestra la página de la ruta (por ejemplo, el login).
+-->
 @if (authService.isLoggedIn() && !isLoginRoute()) {
   <app-menu></app-menu>
 } @else {
+  <!-- router-outlet = el "hueco" donde Angular dibuja la página de la ruta abierta -->
   <router-outlet></router-outlet>
 }

@@ -3,9 +3,10 @@ import { Tabla } from '../../Components/tabla/tabla';
 import { ProductosService, Producto } from '../../Services/productos';
 import { formatearPesos } from '../../utils/formato';
 
-// Así se ve cada fila en la tabla: igual que Producto, pero con el precio como texto
+// Omit = igual que Producto pero sin "precio"; & = luego se agrega precio como texto ("$ 20.000")
 type FilaProducto = Omit<Producto, 'precio'> & { precio: string };
 
+// Vista (página) de Inventario
 @Component({
   imports: [Tabla],
   selector: 'app-inventario',
@@ -13,15 +14,19 @@ type FilaProducto = Omit<Producto, 'precio'> & { precio: string };
   templateUrl: './inventario.html',
 })
 export class Inventario {
+  // inject() = pedirle a Angular el servicio de productos
   private productosService = inject(ProductosService);
 
+  // signal con la lista que muestra la tabla (empieza vacía)
   productos = signal<FilaProducto[]>([]);
 
+  // constructor = se ejecuta al abrir la página
   constructor() {
-    // Cada vez que se abre la página se piden los productos a la base de datos
+    // subscribe = pide los productos y, cuando lleguen, los guarda en el signal
     this.productosService.getProductos().subscribe((data) => {
-      // El precio se muestra en pesos: 20000 → "$ 20.000"
+      // map = recorre la lista; ...producto copia los campos y cambia solo el precio
       const filas = data.map((producto) => ({ ...producto, precio: formatearPesos(producto.precio) }));
+      // .set() = actualiza el signal → la tabla se redibuja
       this.productos.set(filas);
     });
   }
