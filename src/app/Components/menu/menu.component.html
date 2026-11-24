@@ -45,6 +45,12 @@
       <button type="button" class="boton-salir" (click)="cerrarSesion()">
         <mat-icon aria-hidden="true">logout</mat-icon> Cerrar sesión
       </button>
+
+      <!-- Círculo de perfil con las iniciales del usuario (ej. AG).
+           [title] = muestra el nombre completo al pasar el mouse -->
+      <span class="perfil" role="img" [title]="nombreCompleto" [attr.aria-label]="'Perfil de ' + nombreCompleto">
+        {{ iniciales }}
+      </span>
     </header>
 
     <router-outlet></router-outlet>

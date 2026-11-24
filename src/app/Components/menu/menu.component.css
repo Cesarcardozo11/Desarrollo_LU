@@ -103,6 +103,22 @@
   height: 18px;
 }
 
+/* Círculo de perfil con las iniciales: vinotinto con letras blancas */
+.perfil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%; /* 50% = círculo */
+  background-color: var(--lulosa-vino);
+  color: var(--lulosa-blanco);
+  font: 600 0.875rem var(--lulosa-fuente-titulos);
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
 @media (max-width: 600px) {
   .barra-superior {
     padding: 0 8px 0 4px;

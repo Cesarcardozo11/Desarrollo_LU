@@ -39,6 +39,18 @@ export class MenuComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
+  // Usuario que inició sesión (se lee de localStorage)
+  private usuario = this.authService.getUsuario();
+
+  // Nombre completo: se muestra al pasar el mouse sobre el círculo
+  readonly nombreCompleto = `${this.usuario?.nombre ?? ''} ${this.usuario?.apellido ?? ''}`.trim();
+
+  // Iniciales para el círculo de perfil: "Ana" + "Gomez" → "AG"
+  // charAt(0) = la primera letra | toUpperCase() = en mayúscula
+  readonly iniciales = (
+    (this.usuario?.nombre?.charAt(0) ?? '') + (this.usuario?.apellido?.charAt(0) ?? '')
+  ).toUpperCase();
+
   // Cerrar sesión: borra la sesión y navega al login.
   // router.navigate = cambiar de página desde el código
   cerrarSesion(): void {

@@ -2,7 +2,7 @@ import { environment } from '../../environments/environment';
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { LoginRequest, LoginResponse, RegistroRequest } from './auth';
+import { AuthUser, LoginRequest, LoginResponse, RegistroRequest } from './auth';
 
 // Servicio = clase que guarda lógica compartida (aquí: todo lo de la sesión).
 // @Injectable = decorador que marca la clase como servicio para que Angular la pueda "inyectar".
@@ -47,5 +47,12 @@ export class AuthService {
   // Hay sesión si hay un usuario guardado. boolean = devuelve true o false
   isLoggedIn(): boolean {
     return localStorage.getItem('currentUser') !== null;
+  }
+
+  // Devuelve el usuario que inició sesión (o null si no hay sesión).
+  // JSON.parse = convierte el texto guardado otra vez en un objeto
+  getUsuario(): AuthUser | null {
+    const guardado = localStorage.getItem('currentUser');
+    return guardado ? JSON.parse(guardado) : null;
   }
 }
