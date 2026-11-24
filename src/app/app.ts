@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { MenuComponent } from './Components/menu/menu.component';
 import { AuthService } from './Services/auth.service';
@@ -21,9 +21,6 @@ export class App {
   public authService = inject(AuthService);
   // private = solo se usa dentro de esta clase
   private router = inject(Router);
-  // signal = variable que avisa a la pantalla cuando cambia.
-  // readonly = no se puede reasignar
-  protected readonly title = signal('Lulosa');
 
   // Devuelve true si la URL actual es /login
   isLoginRoute(): boolean {
